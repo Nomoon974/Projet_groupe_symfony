@@ -24,7 +24,11 @@ class Image
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'id_image')]
     private $User_id;
 
+    #[ORM\Column(type: 'datetime')]
+    private $date_upload;
 
+    #[ORM\Column(type: 'string', length: 20)]
+    private $dimension;
 
     public function __construct()
     {
@@ -72,5 +76,27 @@ class Image
         return $this;
     }
 
+    public function getDateUpload(): ?\DateTimeInterface
+    {
+        return $this->date_upload;
+    }
 
+    public function setDateUpload(\DateTimeInterface $date_upload): self
+    {
+        $this->date_upload = $date_upload;
+
+        return $this;
+    }
+
+    public function getDimension(): ?string
+    {
+        return $this->dimension;
+    }
+
+    public function setDimension(string $dimension): self
+    {
+        $this->dimension = $dimension;
+
+        return $this;
+    }
 }
