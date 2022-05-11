@@ -24,11 +24,15 @@ class Image
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'id_image')]
     private $User_id;
 
+    #[ORM\OneToMany(mappedBy: 'image', targetEntity: Favoris::class)]
+    private $favoris;
+
 
 
     public function __construct()
     {
         $this->id_user = new ArrayCollection();
+        $this->favoris = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -68,6 +72,36 @@ class Image
     public function setUserId(?User $User_id): self
     {
         $this->User_id = $User_id;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Favoris>
+     */
+    public function getFavoris(): Collection
+    {
+        return $this->favoris;
+    }
+
+    public function addFavori(Favoris $favori): self
+    {
+        if (!$this->favoris->contains($favori)) {
+            $this->favoris[] = $favori;
+            $favori->setImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavori(Favoris $favori): self
+    {
+        if ($this->favoris->removeElement($favori)) {
+            // set the owning side to null (unless already changed)
+            if ($favori->getImage() === $this) {
+                $favori->setImage(null);
+            }
+        }
 
         return $this;
     }

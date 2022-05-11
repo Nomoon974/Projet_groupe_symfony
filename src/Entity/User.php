@@ -37,6 +37,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Favoris::class)]
     private $favoris;
 
+    #[ORM\Column(type: 'string', length: 100)]
+    private $pseudo;
+
+    #[ORM\Column(type: 'string', length: 100)]
+    private $nom;
+
+    #[ORM\Column(type: 'string', length: 100)]
+    private $prenom;
+
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private $date_naiss;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $avatar;
+
     public function __construct()
     {
         $this->id_image = new ArrayCollection();
@@ -219,6 +234,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $favori->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getDateNaiss(): ?\DateTimeInterface
+    {
+        return $this->date_naiss;
+    }
+
+    public function setDateNaiss(?\DateTimeInterface $date_naiss): self
+    {
+        $this->date_naiss = $date_naiss;
+
+        return $this;
+    }
+
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(?string $avatar): self
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }
