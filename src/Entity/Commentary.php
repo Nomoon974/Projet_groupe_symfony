@@ -20,6 +20,10 @@ class Commentary
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
+    #[ORM\ManyToOne(targetEntity: Image::class, inversedBy: 'commentaries')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $image;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +49,18 @@ class Commentary
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getImage(): ?Image
+    {
+        return $this->image;
+    }
+
+    public function setImage(?Image $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

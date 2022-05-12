@@ -24,11 +24,15 @@ class Image
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'id_image')]
     private $User_id;
 
+    #[ORM\OneToMany(mappedBy: 'image', targetEntity: Commentary::class)]
+    private $commentaries;
+
 
 
     public function __construct()
     {
         $this->id_user = new ArrayCollection();
+        $this->commentaries = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -68,6 +72,36 @@ class Image
     public function setUserId(?User $User_id): self
     {
         $this->User_id = $User_id;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commentary>
+     */
+    public function getCommentaries(): Collection
+    {
+        return $this->commentaries;
+    }
+
+    public function addCommentary(Commentary $commentary): self
+    {
+        if (!$this->commentaries->contains($commentary)) {
+            $this->commentaries[] = $commentary;
+            $commentary->setImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentary(Commentary $commentary): self
+    {
+        if ($this->commentaries->removeElement($commentary)) {
+            // set the owning side to null (unless already changed)
+            if ($commentary->getImage() === $this) {
+                $commentary->setImage(null);
+            }
+        }
 
         return $this;
     }
