@@ -16,7 +16,7 @@ class Image
     private $id;
 
     #[ORM\Column(type: 'string', length: 40)]
-    private $Title;
+    private $title;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $url;
@@ -24,10 +24,16 @@ class Image
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'id_image')]
     private $User_id;
 
+    #[ORM\Column(type: 'integer')]
+    private $aime;
 
+    #[ORM\Column(type: 'integer')]
+    private $pasaimer;
 
     public function __construct()
     {
+        $this->setAime(0);
+        $this->setPasaimer(0);
         $this->id_user = new ArrayCollection();
     }
 
@@ -38,12 +44,12 @@ class Image
 
     public function getTitle(): ?string
     {
-        return $this->Title;
+        return $this->title;
     }
 
-    public function setTitle(string $Title): self
+    public function setTitle(string $title): self
     {
-        $this->Title = $Title;
+        $this->title = $title;
 
         return $this;
     }
@@ -68,6 +74,30 @@ class Image
     public function setUserId(?User $User_id): self
     {
         $this->User_id = $User_id;
+
+        return $this;
+    }
+
+    public function getAime(): ?int
+    {
+        return $this->aime;
+    }
+
+    public function setAime(int $aime): self
+    {
+        $this->aime = $aime;
+
+        return $this;
+    }
+
+    public function getPasaimer(): ?int
+    {
+        return $this->pasaimer;
+    }
+
+    public function setPasaimer(int $pasaimer): self
+    {
+        $this->pasaimer = $pasaimer;
 
         return $this;
     }

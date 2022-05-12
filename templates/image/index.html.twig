@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ImageController{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello! 😁</h1>
+{% if images is defined and images is not null %}
+    {% for image in images %}
+        <img src="https://c.tenor.com/y9aExFtmlG4AAAAM/de-fun%C3%A8s-louis-de-fun%C3%A8s.gif">
+        {% if image is defined and image is not null %}
+        <a href="{{ path('app_like', {"image" : image.id}) }}">like👍🏻</button>
+        <a href="">dislike👎🏻</button>
+        {% endif %}
+    {% else %}
+        pas d'images
+    {% endfor %}
+{% endif %}
+        
+</div>
+{% endblock %}
