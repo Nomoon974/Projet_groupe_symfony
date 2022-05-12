@@ -41,6 +41,10 @@ class Commentary
         return $this;
     }
 
+    public function __toString(){         
+        return "" . $this->getMessage(); // Remplacer champ par une propriété "string" de l'entité     }
+    }
+
     public function getUser(): ?User
     {
         return $this->user;
@@ -64,4 +68,6 @@ class Commentary
 
         return $this;
     }
+ 
+
 }
