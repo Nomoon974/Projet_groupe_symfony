@@ -9,13 +9,13 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello! 😁</h1>
+    <h1>Welcome ! 😁</h1>
 {% if images is defined and images is not null %}
     {% for image in images %}
-        <img src="https://c.tenor.com/y9aExFtmlG4AAAAM/de-fun%C3%A8s-louis-de-fun%C3%A8s.gif">
+        <img src="https://c.tenor.com/y9aExFtmlG4AAAAM/de-fun%C3%A8s-louis-de-fun%C3%A8s.gif"><br>
         {% if image is defined and image is not null %}
-        <a href="{{ path('app_like', {"image" : image.id}) }}">like👍🏻</button>
-        <a href="">dislike👎🏻</button>
+        <a href="{{ path('app_like', {"image" : image.id}) }}">like👍🏻</button><br>
+        <a href="{{ path('app_dislike', {"image" : image.id}) }}">dislike👎🏻</button>
         {% endif %}
     {% else %}
         pas d'images

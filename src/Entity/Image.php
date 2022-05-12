@@ -33,7 +33,7 @@ class Image
     public function __construct()
     {
         $this->setAime(0);
-        $this->setPasaimer(0);
+        $this->setPasaimer(-1);
         $this->id_user = new ArrayCollection();
     }
 

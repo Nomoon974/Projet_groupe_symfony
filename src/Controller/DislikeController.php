@@ -14,7 +14,7 @@ class DislikeController extends AbstractController
     #[Route('/dislike/{image}', name: 'app_dislike')]
     public function index(Image $image, ImageRepository $imageRepository): Response
     {
-        $image->setPasaimer($image->getPasaimer() + 1);
+        $image->setPasaimer($image->getPasaimer() - 1);
         $imageRepository->add($image, true);
         return $this->redirectToRoute("app_image");
     }
