@@ -19,4 +19,22 @@ class HomeController extends AbstractController
             'images' => $imageRepository->findAll(),
         ]);
     }
+
+    #[Route('/image', name: 'app_image_index', methods: ['GET'])]
+    public function image(ImageRepository $imageRepository): Response
+    {
+        return $this->render('image/index.html.twig', [
+            'images' => $imageRepository->findAll(),
+        ]);
+    }
+
+
+    #[Route('/commentary', name: 'app_commentary_index', methods: ['GET'])]
+    public function commentary(CommentaryRepository $commentaryRepository): Response
+    {
+        return $this->render('commentary/index.html.twig', [
+            'commentaries' => $commentaryRepository->findAll(),
+        ]);
+    }
+
 }
