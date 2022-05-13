@@ -13,7 +13,15 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
+    <header>
+        {#% block title %}Instakilo | Sign up | Sign in | Image | Commentary{% endblock % #}
+        {% block header %} {% include 'header.html.twig' %} {% endblock %}
+    </header>
     <body>
         {% block body %}{% endblock %}
     </body>
+     <footer>
+        {% block footer %}Instakio created by Steve/Pierr/Sophie/Lucus/Pichun ©2022{% endblock %}
+    </footer>
+    
 </html>
