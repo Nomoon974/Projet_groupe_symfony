@@ -21,7 +21,7 @@ class Commentary
     private $user;
 
     #[ORM\ManyToOne(targetEntity: Image::class, inversedBy: 'commentaries')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private $image;
 
     public function getId(): ?int

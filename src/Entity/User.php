@@ -38,6 +38,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->id_image = new ArrayCollection();
         $this->Comment = new ArrayCollection();
+        $this->setRoles(["ROLE_MEMBER"]);
     }
 
     public function getId(): ?int

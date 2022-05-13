@@ -12,11 +12,11 @@ class CommentaryFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
-        for($i=0; $i<5;$i++){
-            $Commentary = new Commentary();
-        $Commentary->setMessage('First commentary');
-        $manager->persist($Commentary);
-        $manager->flush();
-        }
+        // for($i=0; $i<5;$i++){
+        //     $Commentary = new Commentary();
+        // $Commentary->setMessage('First commentary');
+        // $manager->persist($Commentary);
+        // $manager->flush();
+        // }
     }
 }

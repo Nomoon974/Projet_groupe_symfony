@@ -12,13 +12,14 @@ class UserFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
-        for($i=0; $i<5;$i++){
-            $User = new User();
-        $User->setEmail('t@t.fr');
-        $User->setRoles(['sign up','sign up','sign up','not sign up','sign up','not sign up']);
-        $User->setPassword('coucou');
-        $manager->persist($User);
-        $manager->flush();
-        }
+       
+        // for($i=0; $i<5;$i++){
+        //     $User = new User();
+        // $User->setEmail('t@t.fr');
+        // $User->setRoles(['sign up']);
+        // $User->setPassword('coucou');
+        // $manager->persist($User);
+        // $manager->flush();
+         // }
     }
 }
